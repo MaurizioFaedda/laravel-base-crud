@@ -6,11 +6,13 @@
         <div class="smartphones-box">
 
             @foreach ($smartphones as $smartphone)
-                <div class="card">
-                    <h4>{{ $smartphone->brand}}</h4>
-                    <h5>{{ $smartphone->model}}</h5>
-                    <h6>{{ $smartphone->price}} €</h6>
-                </div>
+                <a href="{{route('smartphones.show', ['smartphone' => $smartphone->id]) }}">
+                    <div class="card">
+                        <h4>{{ $smartphone->brand}}</h4>
+                        <h5>{{ $smartphone->model}}</h5>
+                        <h6>{{ $smartphone->price}} €</h6>
+                    </div>
+                </a>
             @endforeach
         </div>
 

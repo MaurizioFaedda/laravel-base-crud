@@ -8,13 +8,13 @@ ul {
   list-style-type: none;
 }
 
-ul li {
-  display: inline-block;
-  padding-right: 50px;
+ul a {
+  text-decoration: none;
 }
 
-ul li a {
-  text-decoration: none;
+header li {
+  display: inline-block;
+  padding-right: 50px;
 }
 
 .container {

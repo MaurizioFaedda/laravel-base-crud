@@ -49,7 +49,11 @@ class SmartphoneController extends Controller
      */
     public function show($id)
     {
-        //
+        $smartphone = Smartphone::find($id);
+        $data = [
+            'smartphone' => $smartphone
+        ];
+        return view('smartphones.show', $data);
     }
 
     /**
