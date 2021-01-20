@@ -14,7 +14,8 @@ class SmartphoneController extends Controller
      */
     public function index()
     {
-        $smartphones = Smartphone::orderBy('price', 'desc')->get();
+        // $smartphones = Smartphone::orderBy('price', 'desc')->get();
+        $smartphones = Smartphone::where('ram', '>', '6')->get();
         $data = [
             'smartphones' => $smartphones
         ];
