@@ -1,1 +1,37 @@
-//
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+ul{
+    list-style-type: none;
+    li{
+        display: inline-block;
+        padding-right: 50px;
+        a{
+            text-decoration: none;
+        }
+    }
+}
+
+.container{
+    width: 1200px;
+    margin: auto;
+    text-align: center;
+    padding: 20px 0;
+    h1{
+        padding: 50px 0;
+    }
+}
+.smartphones-box{
+    display: flex;
+    justify-content: space-between;
+    padding: 60px;
+    .card{
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        border-radius: 4px;
+        text-align: center;
+    }
+}

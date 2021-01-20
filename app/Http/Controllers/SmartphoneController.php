@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Smartphone;
 
 class SmartphoneController extends Controller
 {
@@ -13,7 +14,10 @@ class SmartphoneController extends Controller
      */
     public function index()
     {
-        return view('smartphones.index');
+        $data = [
+            'smartphones' => Smartphone::all()
+        ];
+        return view('smartphones.index', $data);
     }
 
     /**
