@@ -13,7 +13,7 @@ class SmartphoneController extends Controller
      */
     public function index()
     {
-        //
+        return view('smartphones.index');
     }
 
     /**
