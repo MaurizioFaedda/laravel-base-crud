@@ -14,8 +14,9 @@ class SmartphoneController extends Controller
      */
     public function index()
     {
+        $smartphones = Smartphone::orderBy('price', 'desc')->get();
         $data = [
-            'smartphones' => Smartphone::all()
+            'smartphones' => $smartphones
         ];
         return view('smartphones.index', $data);
     }
@@ -51,7 +52,7 @@ class SmartphoneController extends Controller
     {
         $smartphone = Smartphone::find($id);
         $data = [
-            'smartphone' => $smartphone
+            'smartphone' => $smartphone,
         ];
         return view('smartphones.show', $data);
     }
