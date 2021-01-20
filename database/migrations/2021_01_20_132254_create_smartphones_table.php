@@ -20,7 +20,7 @@ class CreateSmartphonesTable extends Migration
             $table->smallInteger('memory');
             $table->tinyInteger('ram');
             $table->smallInteger('battery');
-            $table->string('color', 20);
+            $table->smallInteger('camera');
             $table->float('price', 6, 2);
             $table->timestamps();
         });
