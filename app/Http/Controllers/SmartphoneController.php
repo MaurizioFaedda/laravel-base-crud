@@ -14,13 +14,14 @@ class SmartphoneController extends Controller
      */
     public function index()
     {
-        // $smartphones = Smartphone::orderBy('price', 'desc')->get();
-        $smartphones = Smartphone::where('ram', '>', '6')->get();
+        $smartphones = Smartphone::orderBy('price', 'desc')->get();
+        // $smartphones = Smartphone::where('ram', '>', '6')->get();
         $data = [
             'smartphones' => $smartphones
         ];
         return view('smartphones.index', $data);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -29,7 +30,7 @@ class SmartphoneController extends Controller
      */
     public function create()
     {
-        //
+        return view('smartphones.create');
     }
 
     /**
@@ -40,7 +41,19 @@ class SmartphoneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $smartphone = new Smartphone();
+        // $smartphone->brand = $data['brand'];
+        // $smartphone->model = $data['model'];
+        // $smartphone->memory = $data['memory'];
+        // $smartphone->ram = $data['ram'];
+        // $smartphone->battery = $data['battery'];
+        // $smartphone->camera = $data['camera'];
+        // $smartphone->price = $data['price'];
+        $smartphone->fill($data);
+        $smartphone->save();
+
+        return redirect()->route('smartphones.index');
     }
 
     /**
@@ -52,10 +65,13 @@ class SmartphoneController extends Controller
     public function show($id)
     {
         $smartphone = Smartphone::find($id);
-        $data = [
-            'smartphone' => $smartphone,
-        ];
-        return view('smartphones.show', $data);
+        if($smartphone) {
+            $data = [
+                'smartphone' => $smartphone,
+            ];
+            return view('smartphones.show', $data);
+        }
+        abort(404);
     }
 
     /**
