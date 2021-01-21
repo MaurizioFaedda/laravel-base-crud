@@ -12,9 +12,11 @@ class SmartphoneController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $smartphones = Smartphone::orderBy('price', 'desc')->get();
+        $smartphones = Smartphone::all()->sortBy($request->category);
+        // $smartphones = Smartphone::orderBy('price', $request)->get();
+        // dd($request);
         // $smartphones = Smartphone::where('ram', '>', '6')->get();
         $data = [
             'smartphones' => $smartphones

@@ -6,12 +6,23 @@
         <a href="{{ route('smartphones.create') }}" class="btn btn-primary my-3">
             Add new smartphone
         </a>
+        <form method="get" action="{{route('smartphones.index')}}">
+            @csrf
+            <select name="category">
+                {{-- <option value="id">ID</option> --}}
+                <option value="price">Price</option>
+                <option value="brand">A-Z</option>
+                <option value="id">Memory</option>
+            </select>
+            <button type="submit">Search</button>
+            </form>
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Brand</th>
                     <th scope="col">Model</th>
+                    <th scope="col">Memory</th>
                     <th scope="col">Price</th>
                     <th scope="col">More</th>
                 </tr>
@@ -27,6 +38,9 @@
                         </td>
                         <td>
                             {{ $smartphone->model }}
+                        </td>
+                        <td>
+                            {{ $smartphone->memory }}
                         </td>
                         <td>
                             {{ number_format($smartphone->price, 2, ',', ' ') }} €
