@@ -9,7 +9,7 @@
         <form method="get" action="{{route('smartphones.index')}}">
             @csrf
             <select name="price">
-                <option value=" "> </option>
+                <option value=" ">Order By </option>
                 <option value="asc">asc</option>
                 <option value="desc">desc</option>
             </select>
