@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('homepage');
 
 Route::resource('/smartphones', 'SmartphoneController');
+
+Route::resource('/accessories', 'AccessoryController');

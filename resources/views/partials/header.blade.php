@@ -13,6 +13,9 @@
       <li class="nav-item">
         <a class="nav-link" href="{{route('smartphones.index')}}">Smartphone</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('accessories.index')}}">Accessories</a>
+      </li>
     </ul>
   </div>
 </nav>
