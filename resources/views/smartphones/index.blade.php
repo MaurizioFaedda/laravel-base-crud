@@ -8,14 +8,25 @@
         </a>
         <form method="get" action="{{route('smartphones.index')}}">
             @csrf
+            <select name="price">
+                <option value=" "> </option>
+                <option value="asc">asc</option>
+                <option value="desc">desc</option>
+            </select>
+            <button type="submit">Search</button>
+        </form>
+
+        {{-- <form method="get" action="{{route('smartphones.index')}}">
+                @csrf
             <select name="category">
-                {{-- <option value="id">ID</option> --}}
                 <option value="price">Price</option>
                 <option value="brand">A-Z</option>
                 <option value="id">Memory</option>
             </select>
             <button type="submit">Search</button>
-            </form>
+
+        </form> --}}
+
         <table class="table">
             <thead>
                 <tr>

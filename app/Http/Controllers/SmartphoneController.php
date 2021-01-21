@@ -14,8 +14,16 @@ class SmartphoneController extends Controller
      */
     public function index(Request $request)
     {
-        $smartphones = Smartphone::all()->sortBy($request->category);
-        // $smartphones = Smartphone::orderBy('price', $request)->get();
+        // $smartphones = Smartphone::all()->sortBy($request->category);
+        $result = $request->price;
+        if ($request->price == "") {
+            $smartphones = Smartphone::all();
+        } else {
+            // l'orderby deve per forza contenere o asc o desc quindi per far caricare la
+            // pagina ho dovuto inserire una condizione per dare dei risultati di default
+            $smartphones = Smartphone::orderBy('price', $request->price)->get();
+        }
+        // $smartphones = Smartphone::orderBy('price', 'asc')->get();
         // dd($request);
         // $smartphones = Smartphone::where('ram', '>', '6')->get();
         $data = [
