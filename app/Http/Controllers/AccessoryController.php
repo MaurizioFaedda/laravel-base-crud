@@ -15,6 +15,7 @@ class AccessoryController extends Controller
     public function index()
     {
         $accessories = Accessory::all();
+        // dd($accessories);
         $data = [
             'accessories' => $accessories
         ];

@@ -23,6 +23,8 @@ class SmartphoneController extends Controller
             // pagina ho dovuto inserire una condizione per dare dei risultati di default
             $smartphones = Smartphone::orderBy('price', $request->price)->get();
         }
+
+        // dd($smartphones);
         // $smartphones = Smartphone::orderBy('price', 'asc')->get();
         // dd($request);
         // $smartphones = Smartphone::where('ram', '>', '6')->get();
@@ -63,7 +65,8 @@ class SmartphoneController extends Controller
         $smartphone->fill($data);
         $smartphone->save();
 
-        return redirect()->route('smartphones.index');
+        $last_smartphone = Smartphone::orderBy('id', 'desc')->first();
+        return redirect()->route('smartphones.index', [$last_smartphone->id]);
     }
 
     /**
@@ -90,9 +93,15 @@ class SmartphoneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Smartphone $smartphone)
     {
-        //
+        if($smartphone){
+            $data = [
+                'smartphone' => $smartphone
+            ];
+            return view('smartphones.edit', $data);
+        }
+        abort(404);
     }
 
     /**
@@ -102,9 +111,13 @@ class SmartphoneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Smartphone $smartphone)
     {
-        //
+        $data = $request->all();
+        $smartphone->update($data);
+
+        return redirect()->route('smartphones.show', ['smartphone' => $smartphone->id]);
+
     }
 
     /**
@@ -113,8 +126,9 @@ class SmartphoneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Smartphone $smartphone)
     {
-        //
+        $smartphone->delete();
+        return redirect()->route('smartphones.index');
     }
 }

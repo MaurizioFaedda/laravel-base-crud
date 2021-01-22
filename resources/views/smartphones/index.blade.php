@@ -6,14 +6,14 @@
         <a href="{{ route('smartphones.create') }}" class="btn btn-primary my-3">
             Add new smartphone
         </a>
-        <form method="get" action="{{route('smartphones.index')}}">
+        <form class="input-group mb-3" method="get" action="{{route('smartphones.index')}}">
             @csrf
-            <select name="price">
-                <option value=" ">Order By </option>
+            <select  name="price">
+                <option value=" ">Order By Price</option>
                 <option value="asc">asc</option>
                 <option value="desc">desc</option>
             </select>
-            <button type="submit">Search</button>
+            <button class="btn btn-secondary" type="submit">Search</button>
         </form>
 
         {{-- <form method="get" action="{{route('smartphones.index')}}">
@@ -36,6 +36,8 @@
                     <th scope="col">Memory</th>
                     <th scope="col">Price</th>
                     <th scope="col">More</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -61,6 +63,22 @@
                                 class="btn btn-info">
                                 More
                             </a>
+                        </td>
+                        <td>
+                            <a href="{{ route('smartphones.edit', ['smartphone' => $smartphone->id]) }}"
+                                class="btn btn-warning">
+                                Edit
+                            </a>
+                        </td>
+                        <td>
+                            <form class="" action="{{ route('smartphones.destroy', ['smartphone' => $smartphone->id]) }}"  method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" name="button">
+                                    Cancella
+                                </button>
+
+                            </form>
                         </td>
                     </tr>
                 @endforeach
