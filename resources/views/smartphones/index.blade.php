@@ -26,7 +26,7 @@
             <button type="submit">Search</button>
 
         </form> --}}
-
+        @include('partials.success')
         <table class="table">
             <thead>
                 <tr>

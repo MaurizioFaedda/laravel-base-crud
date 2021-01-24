@@ -31,7 +31,7 @@ class SmartphoneController extends Controller
         $data = [
             'smartphones' => $smartphones
         ];
-        return view('smartphones.index', $data);
+        return view('smartphones.index', $data)->withSuccess('');
     }
 
 
@@ -66,7 +66,7 @@ class SmartphoneController extends Controller
         $smartphone->save();
 
         $last_smartphone = Smartphone::orderBy('id', 'desc')->first();
-        return redirect()->route('smartphones.index', [$last_smartphone->id]);
+        return redirect()->route('smartphones.index')->withSuccess('Salvataggio completato');
     }
 
     /**
@@ -116,7 +116,7 @@ class SmartphoneController extends Controller
         $data = $request->all();
         $smartphone->update($data);
 
-        return redirect()->route('smartphones.show', ['smartphone' => $smartphone->id]);
+        return redirect()->route('smartphones.index')->withSuccess('Modifica completata');
 
     }
 
@@ -129,6 +129,6 @@ class SmartphoneController extends Controller
     public function destroy(Smartphone $smartphone)
     {
         $smartphone->delete();
-        return redirect()->route('smartphones.index');
+        return redirect()->route('smartphones.index')->withSuccess('Cancellazione completata');
     }
 }
